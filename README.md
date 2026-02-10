@@ -1,4 +1,4 @@
-~~# Fitness Tracker API - Endterm Project
+# Fitness Tracker API - Endterm Project
 
 ## Project Overview
 
