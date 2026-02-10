@@ -27,6 +27,7 @@ public final class UserService {
 
     public User update(Long id, User user) {
         User existing = getById(id);
+        existing.setUsername(user.getUsername());
         existing.setAge(user.getAge());
         existing.setWeight(user.getWeight());
         existing.setEmail(user.getEmail());

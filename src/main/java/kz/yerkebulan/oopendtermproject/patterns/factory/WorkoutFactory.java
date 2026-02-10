@@ -10,9 +10,8 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-@UtilityClass
 public final class WorkoutFactory {
-    public Workout createWorkout(String type, Map<String, Object> params) {
+    public static Workout createWorkout(String type, Map<String, Object> params) {
         switch (type.toUpperCase()) {
             case "CARDIO":
                 return createCardioWorkout(params);
@@ -25,7 +24,7 @@ public final class WorkoutFactory {
         }
     }
 
-    private CardioWorkout createCardioWorkout(Map<String, Object> params) {
+    private static CardioWorkout createCardioWorkout(Map<String, Object> params) {
         CardioWorkout workout = new CardioWorkout();
         workout.setDuration((Integer) params.get("duration"));
         workout.setTitle((String) params.get("title"));
@@ -33,7 +32,7 @@ public final class WorkoutFactory {
         return workout;
     }
 
-    private StrengthWorkout createStrengthWorkout(Map<String, Object> params) {
+    private static StrengthWorkout createStrengthWorkout(Map<String, Object> params) {
         StrengthWorkout workout = new StrengthWorkout();
         workout.setDuration((Integer) params.get("duration"));
         workout.setTitle((String) params.get("title"));
@@ -41,7 +40,7 @@ public final class WorkoutFactory {
         return workout;
     }
 
-    private YogaWorkout createYogaWorkout(Map<String, Object> params) {
+    private static YogaWorkout createYogaWorkout(Map<String, Object> params) {
         YogaWorkout workout = new YogaWorkout();
         workout.setDuration((Integer) params.get("duration"));
         workout.setTitle((String) params.get("title"));
