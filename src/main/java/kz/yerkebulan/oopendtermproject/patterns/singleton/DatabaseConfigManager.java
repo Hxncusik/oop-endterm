@@ -5,7 +5,7 @@ public class DatabaseConfigManager {
     private final String dbUrl;
 
     private DatabaseConfigManager() {
-        this.dbUrl = "jdbc:postgresql://localhost:1111/postgres";
+        this.dbUrl = "jdbc:postgresql://aws-1-eu-central-2.pooler.supabase.com:5432/postgres?user=postgres.rglgtkujtexehppimeai&password=6qlL5e0865lW1ayd";
     }
 
     public static DatabaseConfigManager getInstance() {

@@ -4,7 +4,6 @@ import kz.yerkebulan.oopendtermproject.model.CardioWorkout;
 import kz.yerkebulan.oopendtermproject.model.StrengthWorkout;
 import kz.yerkebulan.oopendtermproject.model.Workout;
 import kz.yerkebulan.oopendtermproject.model.YogaWorkout;
-import lombok.experimental.UtilityClass;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

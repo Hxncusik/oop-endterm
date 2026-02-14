@@ -1,28 +1,38 @@
 package kz.yerkebulan.oopendtermproject.service;
 
+import kz.yerkebulan.oopendtermproject.cache.UserCache;
 import kz.yerkebulan.oopendtermproject.dto.User;
 import kz.yerkebulan.oopendtermproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Collection;
 
 @Service
 @RequiredArgsConstructor
 public final class UserService {
     private final UserRepository repository;
+    private final UserCache userCache;
 
     public User create(User user) {
+        userCache.put(user);
         return repository.save(user);
     }
 
-    public List<User> getAll() {
-        return repository.findAll();
+    public Collection<User> getAll() {
+        if (userCache.isEmpty()) {
+            return repository.findAll();
+        }
+        return userCache.getAll();
     }
 
     public User getById(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Book not found"));
+        User user = userCache.get(id);
+        if (user == null) {
+            return repository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("User not found"));
+        }
+        return user;
     }
 
     public User update(Long id, User user) {
@@ -37,6 +47,6 @@ public final class UserService {
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        repository.delete(userCache.remove(id));
     }
 }

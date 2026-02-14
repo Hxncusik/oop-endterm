@@ -18,4 +18,5 @@ public final class Exercise {
     private int sets;
     private int reps;
     private int weight;
+    private boolean deleted;
 }
